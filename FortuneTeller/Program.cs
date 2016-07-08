@@ -27,10 +27,19 @@ namespace FortuneTeller
             string birthMonth = Console.ReadLine();
             Console.Clear();
 
-            Console.WriteLine("Enter your favorite ROYGBIV color. (Enter \"Help\" for information.)");
-            string ROYGBIV = Console.ReadLine();
+            Console.WriteLine("Enter your favorite ROYGBIV color.")
+            Console.WriteLine("Enter \"Help\" for information.)");
+            string ROYGBIV = Console.ReadLine().ToLower();
             Console.Clear();
 
+            while (ROYGBIV != "red" && ROYGBIV != "orange" && ROYGBIV != "yellow"
+                && ROYGBIV != "green" && ROYGBIV != "blue" && ROYGBIV != "indigo"
+                && ROYGBIV != "violet" && ROYGBIV != "help")
+            {
+
+            }
+
+            int siblings = -1;
             Console.WriteLine("Enter how many siblings you have.");
             int siblings = int.Parse(Console.ReadLine());
             Console.Clear();
@@ -58,9 +67,13 @@ namespace FortuneTeller
             {
                 location = "New York, New York";
             }
-            else
+            else if (siblings == 3)
             {
                 location = "Paris, France";
+            }
+            else
+            {
+                location = "Los Angeles, California";
             }
 
 
