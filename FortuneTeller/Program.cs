@@ -10,19 +10,24 @@ namespace FortuneTeller
     {
         static void Main(string[] args)
         {
-
+            //PART 1 -- INPUT
+            
+            //Gets the user's first name.
             Console.WriteLine("Enter your first name.");
             string firstName = Console.ReadLine();
             Console.Clear();
 
+            //Gets the user's last name.
             Console.WriteLine("Enter your last name.");
             string lastName = Console.ReadLine();
             Console.Clear();
 
+            //Gets the user's age.
             Console.WriteLine("Enter your age.");
             int age = int.Parse(Console.ReadLine());
             Console.Clear();
 
+            //Ensures the user's age isn't negative.
             while(age < 0)
             {
                 Console.WriteLine("Your age can't be negative.");
@@ -31,10 +36,12 @@ namespace FortuneTeller
                 Console.Clear();
             }
 
+            //Gets the user's birth month.
             Console.WriteLine("Enter your birth month.");
             string birthMonth = Console.ReadLine().ToLower();
             Console.Clear();
 
+            //Ensures the user's birth month is valid.
             while (birthMonth != "january" && birthMonth != "february" && birthMonth != "march"
                 && birthMonth != "april" && birthMonth != "may" && birthMonth != "june"
                 && birthMonth != "july" && birthMonth != "august" && birthMonth != "september"
@@ -46,11 +53,13 @@ namespace FortuneTeller
                 Console.Clear();
             }
 
+            //Gets the user's favorite color.
             Console.WriteLine("Enter your favorite ROYGBIV color.");
             Console.WriteLine("Enter \"Help\" for information.)");
             string ROYGBIV = Console.ReadLine().ToLower();
             Console.Clear();
 
+            //Ensures the user's favorite color is valid, or displays the help screen if appropriate.
             while (ROYGBIV != "red" && ROYGBIV != "orange" && ROYGBIV != "yellow"
                 && ROYGBIV != "green" && ROYGBIV != "blue" && ROYGBIV != "indigo"
                 && ROYGBIV != "violet")
@@ -70,10 +79,12 @@ namespace FortuneTeller
                 }
             }
 
+            //Gets the user's number of siblings.
             Console.WriteLine("Enter how many siblings you have.");
             int siblings = int.Parse(Console.ReadLine());
             Console.Clear();
 
+            //Ensures the number of siblings isn't negative.
             while (siblings <0)
             {
                 Console.WriteLine("You can't have negative siblings.");
@@ -115,7 +126,7 @@ namespace FortuneTeller
                 location = "Los Angeles, California";
             }
 
-            string vehicle;
+            string vehicle = "";
             switch (ROYGBIV)
             {
                 case "red":
@@ -145,20 +156,59 @@ namespace FortuneTeller
                     break;
             }
 
+            //charNum is the variable that determines which, if any,
+            //characters in the birth month are found in the first and last name.
+
             int charNum = -1;
 
             for (int x = 0; x <= 2 && charNum < 0; x++)
             {
                 for (int y = 0; y <= firstName.Length; y++)
                 {
+                    if (birthMonth.Substring(x, 1) == firstName.Substring(y, 1))
+                    {
+                        charNum = x;
+                    }
+                }
 
+                for (int y = 0; y <= lastName.Length; y++)
+                {
+                    if (birthMonth.Substring(x, 1) == lastName.Substring(y, 1))
+                    {
+                        charNum = x;
+                    }
                 }
             }
 
+            int bankAccount = 0;
+
+            if (charNum == -1)
+            {
+                bankAccount = 1000000;
+            }
+            else if (charNum == 0)
+            {
+                bankAccount = 2000000;
+            }
+            else if (charNum == 1)
+            {
+                bankAccount = 3000000;
+            }
+            else if (charNum == 2)
+            {
+                bankAccount = 4000000;
+            }
+            else
+            {
+                Console.WriteLine("Something broke.");
+                Console.ReadKey();
+            }
+
+            //PART 3 -- OUTPUT
+            Console.WriteLine($@"{firstName} {lastName} will retire in {retireIn} years with {bankAccount} in the bank,
+                a vacation home in {location} and a {vehicle}.");
 
 
-
-               
 
 
 
