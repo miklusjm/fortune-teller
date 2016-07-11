@@ -209,11 +209,12 @@ namespace FortuneTeller
                 }
 
                 //Gets the user's number of siblings.
-                //It's read as a string first to check for quit/restart.
+                //It's declared outside the logical statement to be in the proper context.
                 int siblings = -1;
                 if (quit == false && restart == false)
                 {
                     Console.WriteLine("Enter how many siblings you have.");
+                    //It's read as a string first to check for quit/restart.
                     string siblingInput = Console.ReadLine();
                     Console.Clear();
 
@@ -398,7 +399,8 @@ namespace FortuneTeller
                     Console.ReadKey();
                 }
 
-                //If restart is chosen, the variable is reset.
+                //If restart is chosen, the variable is reset,
+                //and it returns to the beginning of the loop.
                 if (restart == true)
                 {
                     restart = false;
